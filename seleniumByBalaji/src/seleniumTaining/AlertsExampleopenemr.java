@@ -21,13 +21,15 @@ public class AlertsExampleopenemr {
 		driver.findElement(By.name("authUser")).sendKeys("admin");
 		driver.findElement(By.name("clearPass")).sendKeys("pass");
 		
+		//drop-down
 		Select selectLanguage=new Select(driver.findElement(By.name("languageChoice")));
 		selectLanguage.selectByVisibleText("English (Standard)");
 		
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		
-        /*Actions action=new Actions(driver.findElement(By.xpath("//[text()='Patient/Client']")));
-		action.moveToElement(target)*/
+		//mouse-hover
+        Actions action=new Actions(driver);
+		action.moveToElement(driver.findElement(By.xpath("//div[text()='Patient/Client']"))).click();
 		
 		driver.findElement(By.xpath("//div[text()='Patients']")).click();
 
