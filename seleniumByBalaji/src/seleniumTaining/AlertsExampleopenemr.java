@@ -8,7 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AlertsExampleopenemr {
 
@@ -70,14 +72,20 @@ public class AlertsExampleopenemr {
 		//returned to default frame from frame 3
 		
 		//alert handling and getting text wait for delayed alert
-	    Thread.sleep(5000);
+	    //Thread.sleep(5000);
+	    WebDriverWait wait=new WebDriverWait(driver,50);
+	    wait.until(ExpectedConditions.alertIsPresent());
+	    
 	    String AlertMssg=driver.switchTo().alert().getText();
 	    System.out.println(AlertMssg);
 	    driver.switchTo().alert().accept();
 	    
+	    //popup comes sometime, sometimes doesn't
+	    if(driver.findElements(By.className("closeDlgIframe")).size()>0)
+	    {
 	  	driver.findElement(By.className("closeDlgIframe")).click();
-	  	
-
+	  	}
+	    
 		//frame switched to 4
 		driver.switchTo().frame("pat");
 	  	String NewU=driver.findElement(By.id("text_title")).getText();
@@ -85,8 +93,8 @@ public class AlertsExampleopenemr {
 	  	 driver.switchTo().defaultContent();
 	    //returned to default frame from frame 4
 		
+	  	 driver.quit();
 		}
-		
 		
 		
 		
