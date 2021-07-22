@@ -34,7 +34,9 @@ public class AlertsExampleopenemr {
 		//mouse-hover
         Actions action=new Actions(driver);
 		action.moveToElement(driver.findElement(By.xpath("//div[text()='Patient/Client']"))).click();
+
 		driver.findElement(By.xpath("//div[text()='Patient/Client']")).click();
+
 		
 		driver.findElement(By.xpath("//div[text()='Patients']")).click();
 
